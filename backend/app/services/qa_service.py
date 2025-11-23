@@ -10,7 +10,10 @@ def ask_question(question: str):
     vectordb = load_vectorstore()
     base_retriever = get_retriever(vectordb)
     
-    # Create LLM for compression
+    # Create LLM for compression (currently OpenAI). If other providers get enabled later,
+    # this branch can be extended accordingly.
+    if not settings.openai_api_key:
+        raise ValueError("OPENAI_API_KEY no configurada")
     llm = ChatOpenAI(model=settings.model_name, openai_api_key=settings.openai_api_key)
     compressor = LLMChainExtractor.from_llm(llm)
     compression_retriever = ContextualCompressionRetriever(
