@@ -31,6 +31,7 @@ export default function RootLayout({
           backgroundColor: '#87ceeb',
           color: '#fff'
         }}>
+          {/*
           <a
             href="https://corporacionsoft.com"
             target="_blank"
@@ -42,7 +43,7 @@ export default function RootLayout({
             }}
           >
             By Corporación Soft
-          </a>
+          </a>*/}
         </footer>
       </body>
     </html>
