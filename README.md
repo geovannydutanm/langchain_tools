@@ -56,7 +56,7 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-Crea `backend/.env`:
+Crea `backend/.env` (ajusta las rutas según tu entorno; `VECTOR_DB_PATH` debe apuntar a un directorio con permisos de escritura, por ejemplo `/tmp/langchain_vector_db` en Render u otra ruta fuera del repositorio):
 ```
 OPENAI_API_KEY=tu_api_key
 MODEL_NAME=gpt-4o-mini
@@ -75,6 +75,8 @@ npm install
 
 - Backend: `uvicorn app.main:app --reload --port 8000`
 - Frontend: `npm run dev` (usa `BACKEND_URL` configurado en `frontend/.env.local`)
+
+> **Nota:** en Render u otros hosts con sistema de archivos solo lectura, define `VECTOR_DB_PATH` como `/tmp/computadoras_embedding_db` (u otra carpeta escribible) desde el panel de variables de entorno antes de desplegar. El backend detecta automáticamente si la ruta relativa no es escribible y cae en un directorio temporal, pero es preferible declararlo explícitamente para que los embeddings sean persistentes.
 
 ## Uso del Dashboard
 

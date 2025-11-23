@@ -417,6 +417,26 @@ export default function ToolsPage() {
                     }}
                   >
                     <div style={{ whiteSpace: 'pre-wrap' }}>{message.content}</div>
+                    {message.role === 'assistant' && (
+                      <div
+                        style={{
+                          marginTop: '8px',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '6px',
+                          fontSize: '12px',
+                          color: message.usedChunks && message.usedChunks.length > 0 ? '#065f46' : '#6b7280',
+                          backgroundColor: message.usedChunks && message.usedChunks.length > 0 ? '#d1fae5' : '#f3f4f6',
+                          borderRadius: '999px',
+                          padding: '4px 10px',
+                        }}
+                      >
+                        Fuente:{' '}
+                        {message.usedChunks && message.usedChunks.length > 0
+                          ? 'Conocimiento local'
+                          : 'Solo modelo'}
+                      </div>
+                    )}
                     {message.usedChunks && message.usedChunks.length > 0 && (
                       <details style={{ marginTop: '10px' }}>
                         <summary style={{ cursor: 'pointer', color: '#6b7280', fontSize: '13px' }}>Ver contexto utilizado</summary>

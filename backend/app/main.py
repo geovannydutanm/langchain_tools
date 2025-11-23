@@ -34,6 +34,13 @@ app = FastAPI()
 current_model = settings.model_name
 current_provider = getattr(settings, "provider", "openai")
 
+@app.get("/")
+async def root():
+    return {
+        "status": "ok",
+        "message": "Langchain Tools API en ejecución. Usa /docs para explorar los endpoints."
+    }
+
 @app.post("/api/init_embeddings", response_model=InitEmbeddingsResponse)
 async def init_embeddings():
     chunks_count = create_embeddings()
